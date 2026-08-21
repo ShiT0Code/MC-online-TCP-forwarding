@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabViewItem
+    x:Class="McOnlineApp.HomeTab"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:McOnlineApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ctc="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ct="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d"
+    IsClosable="False"
+    Header="主页">
+    <TabViewItem.IconSource>
+        <FontIconSource Glyph="&#xE80F;"/>
+    </TabViewItem.IconSource>
+    <ScrollView>
+        <Grid RowSpacing="12" Padding="24" Loaded="Grid_Loaded">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="新建联机" FontSize="18" FontWeight="Bold"/>
+            <ctc:SettingsCard Header="联机角色" Grid.Row="1" Click="ParnerSettingsCard_Click" IsClickEnabled="True" IsActionIconVisible="False">
+                <ComboBox x:Name="comboBox" IsDropDownOpen="False">
+                    <x:String>我负责打开存档</x:String>
+                    <x:String>我要连接到联机游戏</x:String>
+                </ComboBox>
+            </ctc:SettingsCard>
+            <StackPanel Spacing="12" HorizontalAlignment="Left" MinWidth="200" Grid.Row="2">
+                <AutoSuggestBox x:Name="serverSuggestBox" Header="服务器" TextChanged="AutoSuggestBox_TextChanged"/>
+                <NumberBox x:Name="portServerNum" Header="服务器端口" SpinButtonPlacementMode="Inline"
+                       Minimum="1024" Maximum="65535" Value="25568" ValueChanged="Num_ValueChanged"/>
+                <TextBox x:Name="displayText" Header="标签页显示名称" Text="联机的世界"/>
+                <NumberBox x:Name="portLocalNum" ValueChanged="Num_ValueChanged" Header="本地端口"
+                       Minimum="1024" MaxHeight="65535"  Value="25565" SpinButtonPlacementMode="Inline"/>
+            </StackPanel>
+
+            <ctc:SettingsCard Header="自动重连" Grid.Row="3" Click="AutoReSettingsCard_Click" IsClickEnabled="True"
+                              IsActionIconVisible="False" HeaderIcon="{ct:FontIcon Glyph=&#xE777;}">
+                <ToggleSwitch x:Name="autoReSw" IsOn="True"/>
+            </ctc:SettingsCard>
+
+            <ctc:SettingsCard Header="开始联机" Grid.Row="4" IsClickEnabled="True" x:Name="startCard" Click="Start_Click"
+                              Description="点击这里开始" HeaderIcon="{ct:FontIcon Glyph=&#xE768;}"/>
+
+            <ctc:SettingsCard Header="食用教程" Grid.Row="5" IsClickEnabled="True" Click="UserGuide_SettingsCard_Click" HeaderIcon="{ct:FontIcon Glyph=&#xE897;}"/>
+
+            <TextBlock Text="关于" Style="{StaticResource BodyStrongTextBlockStyle}" Grid.Row="6"/>
+            <ctc:SettingsExpander Header="MC 联机工具" Description="© 2026 ShiT0Code. All rights reserved."
+                              HeaderIcon="{ct:BitmapIcon Source=ms-appx:///Assets/StoreLogo/StoreLogo.png}"
+                              Grid.Row="7" x:Name="infoCard">
+                <ctc:SettingsExpander.Transitions>
+                    <TransitionCollection>
+                        <RepositionThemeTransition/>
+                    </TransitionCollection>
+                </ctc:SettingsExpander.Transitions>
+                <ctc:SettingsExpander.Items>
+                    <ctc:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
+                        <StackPanel Margin="-12,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="引用的开源项目"/>
+                            <HyperlinkButton Content="Windows App SDK" NavigateUri="https://github.com/microsoft/WindowsAppSDK"/>
+                            <HyperlinkButton Content="Windows Community Toolkit" NavigateUri="https://github.com/CommunityToolkit/Windows"/>
+                        </StackPanel>
+                    </ctc:SettingsCard>
+                    <ctc:SettingsCard Header="引用的开源项目的许可协议" Click="LICENSEs_SettingsCard_Click" IsClickEnabled="True"/>
+                    <ctc:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
+                        <StackPanel Margin="-12,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="
+THIS CODE AND INFORMATION IS PROVIDED 'AS IS' WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, 
+INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE."
+                                       TextWrapping="WrapWholeWords"/>
+                            <HyperlinkButton Content="Github" NavigateUri="https://github.com/ShiT0Code/MC-online-TCP-forwarding"/>
+                            <HyperlinkButton Content="此项目的 MIT 许可协议" Click="ThisLICENSE_HyperlinkButton_Click"/>
+                        </StackPanel>
+                    </ctc:SettingsCard>
+                </ctc:SettingsExpander.Items>
+            </ctc:SettingsExpander>
+        </Grid>
+    </ScrollView>
+</TabViewItem>

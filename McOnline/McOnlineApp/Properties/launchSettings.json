@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "McOnlineApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "McOnlineApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
