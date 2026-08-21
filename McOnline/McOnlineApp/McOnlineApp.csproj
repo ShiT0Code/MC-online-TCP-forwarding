@@ -144,7 +144,7 @@
     <PackageCertificateThumbprint>0EE2211BF2598EDAECB375BF77B790793AE1AB92</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-    <AppxPackageDir>D:\ProgramsBuild\McOnlineApp\</AppxPackageDir>
+    <AppxPackageDir>D:\ProgramsBuild\McOnline\</AppxPackageDir>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <GenerateTestArtifacts>False</GenerateTestArtifacts>
     <AppxBundle>Never</AppxBundle>
